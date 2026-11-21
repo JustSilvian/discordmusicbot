@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.gradleup.shadow' version '9.4.2'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+application {
+    mainClass = 'org.example.Main'
+    applicationDefaultJvmArgs = ['--enable-native-access=ALL-UNNAMED']
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:6.5.0'
+    implementation 'dev.arbjerg:lavaplayer:2.2.4'
+    implementation 'club.minnced:jdave-api:0.1.8'
+    implementation 'club.minnced:jdave-native-win-x86-64:0.1.8'
+    implementation 'club.minnced:jdave-native-linux-x86-64:0.1.8'
+    implementation 'club.minnced:jdave-native-linux-aarch64:0.1.8'   // ARM, e.g. Raspberry Pi
+    // implementation 'club.minnced:jdave-native-darwin:0.1.8'       // macOS
+    implementation 'org.slf4j:slf4j-simple:2.0.17'
+}
+
+shadowJar {
+    archiveVersion = ''
+    archiveClassifier = ''
+    mergeServiceFiles()
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.Main',
+                'Enable-Native-Access': 'ALL-UNNAMED'
+        )
+    }
+}
