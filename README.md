@@ -63,7 +63,7 @@ The bot reads its token from an environment variable:
 Clone the repo and build the jar:
 
 ```bash
-git clone https://github.com/<your-username>/discordmusicbot.git
+git clone https://github.com/JustSilvian/discordmusicbot.git
 cd discordmusicbot
 ./gradlew shadowJar        # on Windows: .\gradlew shadowJar
 ```
